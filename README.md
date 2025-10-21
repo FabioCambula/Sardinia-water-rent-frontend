@@ -1,35 +1,25 @@
-# Sardinia-water-rent
+# Sardinia water rent
 
-This template should help get you started developing with Vue 3 in Vite.
+Frontend del progetto web app di noleggio prodotti, sviluppato in **Vue.js 3** con **Vite**.  
+Gestisce la parte utente e admin del sito, con un’interfaccia responsive e un flusso di prenotazione intuitivo.
 
-## Recommended IDE Setup
+## 🚀 Funzionalità principali
+- Visualizzazione prodotti con immagini e descrizioni.  
+- Pagina dettagli prodotto con selezione quantità e date.  
+- Carrello integrato tramite modal, accessibile da qualsiasi pagina.  
+- Prenotazione e storico ordini utente.  
+- Dashboard admin per la gestione prenotazioni.  
+- Autenticazione utenti (login/registrazione) con ruoli e sessioni persistenti.  
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## 🛠️ Stack Tecnologico
+- **Framework:** Vue 3 + Vite  
+- **Routing:** Vue Router  
+- **Gestione stato:** Pinia  
+- **HTTP client:** Axios  
+- **UI:** Bootstrap / CSS personalizzato  
+- **Date picker:** VueDatePicker
+- **Deploy:** Vercel
 
-## Customize configuration
+  [Link sito](https://sardinia-water-rent.vercel.app/)
+  [Backend](https://github.com/FabioCambula/Sardinia-water-rent-backend)
 
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
