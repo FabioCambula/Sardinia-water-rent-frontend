@@ -176,13 +176,6 @@ h3{
 li.prodotti{
   margin-bottom: 1rem;
 }
-/* button.prodotti{
-  border-radius: 10px;
-  border-bottom: solid #339a8f 3px;
-  transition: transform 0.4s ease;
-  color: #339a8f;
-  font-weight: 600;
-} */
  button.prodotti{
   position: absolute;
   right: 1rem;
@@ -222,7 +215,7 @@ span{
 }
 @media (max-width: 576px){
   .booking-list-container {
-    max-height: 300px; /* regola come preferisci */
+    max-height: 300px;
     overflow-y: auto;
     border: 1px solid #ddd;
     border-radius: 18px;

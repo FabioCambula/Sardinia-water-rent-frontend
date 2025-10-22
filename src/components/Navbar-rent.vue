@@ -47,9 +47,6 @@
 
         <!-- Azioni a destra -->
         <div class="d-flex align-items-center gap-4">
-          <!-- Carrello (solo se loggato come utente) -->
-          
-
           <!-- Utente loggato -->
           <div v-if="auth.isLoggedIn">
             <span class="saluto me-3">Ciao, {{ auth.user.name }}</span>
@@ -112,7 +109,7 @@ const closeMenu = () => {
   if (collapseInstance) collapseInstance.hide()
 }
 
-// 🔹 Quando l'utente è loggato, carica subito il carrello
+//utente loggato, carica subito il carrello
 watchEffect(() => {
   if (auth.isLoggedIn && !auth.isAdmin) {
     cart.getCart()
@@ -223,18 +220,17 @@ const logout = () => {
   .navbar-toggler {
     border: none;
     font-size: 1.2rem;
-    margin-left: auto; /* spinge il toggler verso destra */
+    margin-left: auto;
   }
   .navbar-toggler:focus {
-    box-shadow: none; /* rimuove il bordo di focus */
+    box-shadow: none;
   }
 
-  /* Nascondiamo il testo di saluto su mobile */
+  /* No testo di saluto su mobile */
   .saluto {
     display: none;
   }
 
-  /* Bottoni dentro menu -> testo più piccolo */
   .accedi,
   .registrati,
   .logout {

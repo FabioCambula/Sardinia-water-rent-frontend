@@ -82,7 +82,6 @@ const login = async () => {
   }
 }
 
-// 👉 esponiamo openModal e closeModal al padre
 defineExpose({ openModal, closeModal })
 </script>
 
