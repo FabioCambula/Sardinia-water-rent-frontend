@@ -1,15 +1,37 @@
 <script setup>
-import { onMounted } from "vue";
+import { ref, onMounted } from "vue";
 import { Modal } from "bootstrap";
+import api from "../axios";
 import { useCartStore } from "../stores/cart-stores";
 
 const cartStore = useCartStore();
 let modalInstance = null;
+const successMsg = ref("");
+const loading = ref(false);
 
 onMounted(() => {
   const modalEl = document.getElementById("cartModal");
   modalInstance = new Modal(modalEl, { backdrop: "static" });
 });
+
+const confirmOrder = async () => {
+  loading.value = true;
+  successMsg.value = "";
+  try {
+    await api.post("/bookings"); // crea prenotazioni
+    await cartStore.getCart();   // svuota carrello
+    successMsg.value = "✅ Ordine confermato con successo!";
+    setTimeout(() => {
+      successMsg.value = "";
+      closeModal();
+    }, 2000);
+  } catch (err) {
+    console.error(err);
+    successMsg.value = "❌ Errore durante la conferma dell’ordine.";
+  } finally {
+    loading.value = false;
+  }
+};
 
 // Mostra modal
 const openModal = async () => {
@@ -24,7 +46,6 @@ const closeModal = () => {
 
 const formatDate = (date) => new Date(date).toLocaleDateString("it-IT");
 
-// Esponi funzioni per la navbar
 defineExpose({ openModal, closeModal });
 </script>
 
@@ -52,8 +73,7 @@ defineExpose({ openModal, closeModal });
                 Quantità: {{ item.quantity }}
               </div>
               <div class="right">
-                  {{ item.totalPrice.toFixed(2) }} €
-
+                {{ item.totalPrice.toFixed(2) }} €
                 <button
                   class="btn delete ms-2"
                   @click="cartStore.removeItem(item._id)"
@@ -63,12 +83,24 @@ defineExpose({ openModal, closeModal });
               </div>
             </li>
           </ul>
+
+          <!-- 🔹 Messaggio feedback -->
+          <p v-if="successMsg" class="mt-3 text-center fw-bold" :class="{
+            'text-success': successMsg.includes('✅'),
+            'text-danger': successMsg.includes('❌')
+          }">
+            {{ successMsg }}
+          </p>
         </div>
 
         <div class="modal-footer">
           <div class="totale me-auto fw-bold">
             Totale: {{ cartStore.totalPrice.toFixed(2) }} €
           </div>
+          <button class="btn conferma" :disabled="loading" @click="confirmOrder">
+            <span v-if="loading">⏳ Conferma in corso...</span>
+            <span v-else>Conferma Ordine</span>
+          </button>
         </div>
       </div>
     </div>
@@ -97,6 +129,16 @@ button.delete:hover{
   transform: scale(1.1);
   color: #d94e0a;
   
+}
+.btn.conferma {
+  background-color: #3dbcaf;
+  color: white;
+  border: none;
+  transition: background 0.3s;
+}
+.btn.conferma:hover {
+  background-color: #33a296;
+  color: white;
 }
 @media (max-width: 576px){
   

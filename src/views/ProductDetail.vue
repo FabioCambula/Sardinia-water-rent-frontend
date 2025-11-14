@@ -1,32 +1,30 @@
 <template>
-    <RouterLink class="nav-link" to="/products"><i class="bi bi-caret-left"></i>Prodotti</RouterLink>
-  <div class="container-fluid">
+  <div v-if="product" class="container-fluid">
+    <RouterLink class="nav-link" to="/products"><i class="bi bi-caret-left"></i> Prodotti</RouterLink>
     <div class="row">
-      <!-- Immagine -->
       <div class="col-lg-5">
-        <img
-          src="../../assets/img/products/kayak.jpg"
-          class="figure-img img-fluid rounded"
-          alt="Kayak 1 posto"
-        />
+        <img :src="product.img" class="figure-img img-fluid rounded" :alt="product.name" />
       </div>
 
-      <!-- Dettagli prodotto -->
       <div class="descrizione col-lg-4 d-flex flex-column justify-content-center">
-        <h2>KAYAK 2 POSTI</h2>
-        <p>
-          Pensato per coppie o amici, offre stabilità e divertimento condiviso. Ottimo per vivere il mare in compagnia senza rinunciare al comfort.
-        </p>
-        <h4>Da 22,00 € al giorno</h4>
-        <div class="calendar"><Calendar productId="68d3f19eccd38cdf9c2d5058"/></div>
-        
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <h4>Da {{ product.price }},00 € al giorno</h4>
+        <div class="calendar">
+          <Calendar :productId="product.productId" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import Calendar from '@/components/Calendar.vue';
+import { useRoute } from "vue-router";
+import { products } from "@/data/products";
+import Calendar from "@/components/Calendar.vue";
+
+const route = useRoute();
+const product = products.find(p => p.id === route.params.id);
 </script>
 
 <style scoped>
@@ -93,4 +91,3 @@ p{
   }
 }
 </style>
-

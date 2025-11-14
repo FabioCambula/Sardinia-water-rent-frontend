@@ -156,6 +156,7 @@ async function prenota() {
   const [startDate, endDate] = date.value;
 
   try {
+    console.log("Adding product:", props.productId)
     await cart.addItem(
       props.productId,
       Number(quantity.value),
