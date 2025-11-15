@@ -105,11 +105,19 @@ h5.modal-title {
   margin-bottom: 1rem;
 }
 .accedi{
-  background-color:rgb(106, 145, 223);
+  background-color:#3dbcaf;
   font-size: 1.1rem;
   margin-top: 1rem;
   color: white;
   font-weight: 600;
   border-radius: 0.7rem;
+}
+.accedi:hover {
+  background-color: #339a8f;
+  color: white;
+}
+.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(61, 188, 175, 0.25);
+  border-color: #3dbcaf;
 }
 </style>

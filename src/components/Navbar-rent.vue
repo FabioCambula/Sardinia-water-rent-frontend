@@ -191,11 +191,8 @@ const logout = () => {
   font-weight: 600;
   border:none;
   transition: transform 0.4s ease;
-  border-bottom: #d94e0a solid 2px;
-  border-radius: 10px;
 }
 .logout:hover {
-  transform: scale(1.1);
   color: #d94e0a;
 }
 .saluto{

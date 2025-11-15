@@ -62,7 +62,7 @@ h4{
   font-size: 1.3rem;
 }
 img{
-  margin-top: -6rem;
+  margin-top: -10rem;
   object-fit:fill;
 }
 p{

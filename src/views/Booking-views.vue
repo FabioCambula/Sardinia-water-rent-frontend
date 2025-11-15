@@ -94,17 +94,11 @@ div.container{
 }
 
 button.delete{
-  border-radius: 10px;
-  border-bottom: #d94e0a 2px solid;
   color: rgb(241, 99, 47);
   font-weight: 600;
-  transition: transform 0.4s ease;
 }
 button.delete:hover{
-  border-bottom: #d94e0a 2px solid;
-  transform: scale(1.1);
-  color: #d94e0a;
-  
+  color: #d94e0a; 
 }
 h2{
   font-weight: 600 !important;
@@ -112,18 +106,15 @@ h2{
 ul.list-group{
   border-radius: 18px;
 }
-button.confirm{
-  background-color: white;
-  color: #3dbcaf;
-  border-bottom: #339a8f 2px solid;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: transform 0.4s ease;
+.btn.confirm {
+  background-color: #3dbcaf;
+  color: white;
+  border: none;
+  transition: background 0.3s;
 }
-button.confirm:hover{
-  transform: scale(1.1);
-  color: #339a8f;
-  border-bottom: #339a8f 2px solid;
+.btn.confirm:hover {
+  background-color: #33a296;
+  color: white;
 }
 @media (max-width: 576px){
   .prezzo{

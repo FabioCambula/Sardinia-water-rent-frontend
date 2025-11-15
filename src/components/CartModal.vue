@@ -120,13 +120,11 @@ div.left{
   padding: 0.5rem;
 }
 button.delete{
-  border-radius: 8px;
   color: rgb(241, 99, 47);
   font-weight: 600;
   transition: transform 0.4s ease;
 }
 button.delete:hover{
-  transform: scale(1.1);
   color: #d94e0a;
   
 }

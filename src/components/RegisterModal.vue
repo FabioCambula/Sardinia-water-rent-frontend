@@ -96,7 +96,7 @@
             </div>
 
             <button 
-              class="btn btn-primary w-100"
+              class="btn registrati w-100"
               :disabled="loading"
             >
               <span v-if="loading">Registrazione...</span>
@@ -222,19 +222,22 @@ h5.modal-title {
   
 }
 .form-control:focus {
-  border-color: rgb(91, 181, 134);
+  border-color: #3dbcaf;
   box-shadow: 0 0 0 0.2rem rgba(91, 181, 134, 0.25);
 }
 label{
   margin-bottom: 1rem;
 }
 .registrati{
-  background-color:rgb(91, 181, 134);
+  background-color:#3dbcaf;
   font-size: 1.1rem;
   margin-top: 1rem;
   color: white;
   font-weight: 600;
   border-radius: 0.7rem;
 }
-
+.registrati:hover {
+  background-color: #339a8f;
+  color: white;
+}
 </style>

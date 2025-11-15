@@ -4,7 +4,7 @@
     <Navbar />
 
     <!-- Qui Vue Router renderizza le pagine -->
-    <div class="gino container-fluid mt-4">
+    <div class="home container-fluid mt-4">
       <RouterView />
     </div>
   </div>
@@ -16,7 +16,7 @@ import { RouterView } from "vue-router";
 </script>
 
 <style scoped>
-.gino {
+.home {
   width: 100%;
   overflow-x: hidden;
   font-family: 'Montserrat', sans-serif;
