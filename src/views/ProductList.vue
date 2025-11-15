@@ -1,12 +1,16 @@
 <template>
   <div class="container-fluid">
-    <div class="row d-flex">
+    <div v-if="loading" class="text-center my-5">
+      <p>Caricamento prodotti...</p>
+    </div>
+    
+    <div v-else class="row d-flex">
       <div
         v-for="product in products"
-        :key="product.id"
+        :key="product._id"
         class="col-md-3 col-6 cursor-pointer justify-content-center text-center"
       >
-        <RouterLink class="nav-link" :to="`/products/${product.id}`">
+        <RouterLink class="nav-link" :to="`/products/${product._id}`">
           <img :src="product.img" class="figure-img img-fluid rounded" :alt="product.name" />
           <p>{{ product.name }}</p>
           <span>Da {{ product.price }},00 €</span>
@@ -17,7 +21,22 @@
 </template>
 
 <script setup>
-import { products } from "@/data/products.js";
+import { ref, onMounted } from 'vue'
+import api from '@/axios'
+
+const products = ref([])
+const loading = ref(true)
+
+onMounted(async () => {
+  try {
+    const { data } = await api.get('/products')
+    products.value = data
+  } catch (error) {
+    console.error('Errore nel caricamento prodotti:', error)
+  } finally {
+    loading.value = false
+  }
+})
 </script>
 
 <style scoped>

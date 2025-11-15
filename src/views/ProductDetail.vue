@@ -1,7 +1,14 @@
 <template>
-  <div v-if="product" class="container-fluid">
-    <RouterLink class="nav-link" to="/products"><i class="bi bi-caret-left"></i> Prodotti</RouterLink>
-    <div class="row">
+  <div class="container-fluid">
+    <RouterLink class="nav-link" to="/products">
+      <i class="bi bi-caret-left"></i> Prodotti
+    </RouterLink>
+
+    <div v-if="loading" class="text-center my-5">
+      <p>Caricamento...</p>
+    </div>
+
+    <div v-else-if="product" class="row">
       <div class="col-lg-5">
         <img :src="product.img" class="figure-img img-fluid rounded" :alt="product.name" />
       </div>
@@ -11,20 +18,37 @@
         <p>{{ product.description }}</p>
         <h4>Da {{ product.price }},00 € al giorno</h4>
         <div class="calendar">
-          <Calendar :productId="product.productId" />
+          <Calendar :productId="product._id" />
         </div>
       </div>
+    </div>
+
+    <div v-else class="text-center my-5">
+      <p>Prodotto non trovato</p>
     </div>
   </div>
 </template>
 
 <script setup>
-import { useRoute } from "vue-router";
-import { products } from "@/data/products";
-import Calendar from "@/components/Calendar.vue";
+import { ref, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+import api from '@/axios'
+import Calendar from '@/components/Calendar.vue'
 
-const route = useRoute();
-const product = products.find(p => p.id === route.params.id);
+const route = useRoute()
+const product = ref(null)
+const loading = ref(true)
+
+onMounted(async () => {
+  try {
+    const { data } = await api.get(`/products/${route.params.id}`)
+    product.value = data
+  } catch (error) {
+    console.error('Errore nel caricamento prodotto:', error)
+  } finally {
+    loading.value = false
+  }
+})
 </script>
 
 <style scoped>
