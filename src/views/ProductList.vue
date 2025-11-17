@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid">
-    <div v-if="loading" class="text-center my-5">
+    <div v-if="loading" class="loading text-center my-5">
       <p>Caricamento prodotti...</p>
     </div>
     
@@ -61,6 +61,11 @@ span{
 .col-md-3:hover{
   transform: scale(1.02);
   box-shadow: 5px 5px 10px #cccccc84;
+}
+.loading p{
+  margin-top: 40vh;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 @media (max-width: 576px){
 
